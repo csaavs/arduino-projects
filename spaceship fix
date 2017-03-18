@@ -1,0 +1,30 @@
+int switchState = 0;
+void setup (){
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(2,INPUT);
+}
+void loop (){
+  switchState = digitalRead(2); // this is a comment. anything written after "//" on the same line will be ignored. 
+  if (switchState == LOW) {
+  // the button is not pressed
+  digitalWrite(4,LOW); //red LED
+  digitalWrite(5,LOW); //red LED
+  digitalWrite(3,HIGH); //green LED
+  delay(150);//wait 150 millisec
+  digitalWrite(3,LOW);
+  delay(150);//wait 150 millisec
+}
+else { //the button is pressed
+  digitalWrite(3,LOW);
+  digitalWrite(4,LOW);
+  digitalWrite(5,HIGH);
+  delay(250); //wait for a quarter second. 250 milllisec conv. 
+  // toggle the LEDs
+  digitalWrite(4,HIGH);
+  digitalWrite(5,LOW);
+  delay(250); //wait for a quarter second. 250 millisec conv. 
+ }
+} //go back to the beginning of the loop 
+  
